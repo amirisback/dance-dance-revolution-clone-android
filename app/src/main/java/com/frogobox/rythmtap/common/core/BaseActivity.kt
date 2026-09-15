@@ -1,6 +1,6 @@
 package com.frogobox.rythmtap.common.core
 
-import com.frogobox.admob.ui.FrogoAdmobActivity
+import com.frogobox.ads.ui.FrogoAdmobActivity
 
 /**
  * Created by Faisal Amir on 24/10/22

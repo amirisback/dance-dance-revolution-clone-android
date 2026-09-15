@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp")
+    
+    
 }
 
 
@@ -22,7 +22,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         // Naming APK // AAB
-        setProperty("archivesBaseName", "${ProjectSetting.NAME_APK}-${versionCode}")
+        
 
         // Inject app name for debug
         resValue("string", "app_name", ProjectSetting.NAME_APP_DEBUG)
@@ -40,7 +40,7 @@ android {
         getByName("release") {
             isDebuggable = false
             isJniDebuggable = false
-            isRenderscriptDebuggable = false
+            
             isPseudoLocalesEnabled = false
             isMinifyEnabled = false
 
@@ -75,8 +75,10 @@ android {
         checkReleaseBuilds = false
     }
 
-    buildFeatures {
+        buildFeatures {
         viewBinding = true
+        resValues = true
+        buildConfig = true
     }
 
     compileOptions {
@@ -85,20 +87,17 @@ android {
     }
 
     kotlin {
-        jvmToolchain {
-            languageVersion.set(JavaLanguageVersion.of("17"))
-        }
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
     }
+}
 
 }
 
 dependencies {
-
-    implementation(Frogo.ui)
-    implementation(Frogo.sdk)
-    implementation(Frogo.admob)
-    implementation(Frogo.recyclerView)
-
-    implementation(Androidx.preferenceKtx)
-
+    implementation("com.github.frogobox:frogo-sdk:3.0.9")
+    implementation("androidx.preference:preference-ktx:1.2.1")
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("com.google.android.material:material:1.12.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.2.0")
 }
